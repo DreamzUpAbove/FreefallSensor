@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/eventHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="4dp"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <TextView
+            style="@style/word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:gravity="left"
+            android:text="Id"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"
+            android:gravity="left"
+            android:text="Start Time"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.8"
+            android:gravity="left"
+            android:text="End Time"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/word_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="left"
+            android:text="Duration"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventHeader"
+        android:padding="4dp"
+        tools:listitem="@layout/event_item_view" />
+
+</RelativeLayout>

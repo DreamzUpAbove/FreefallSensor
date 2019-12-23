@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                arguments = [eventBusIndex: 'com.example.myapp.MyEventBusIndex']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries
+    debugImplementation librariesDebug
+
+    testImplementation testLibraries
+    androidTestImplementation androidTestLibraries
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    kapt 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+}
+
+// Task to delete old jar
+task deleteOldJar(type: Delete) {
+    delete 'libs/jars/motion_detector.jar'
+}
+
+// Task to export release jar
+task exportReleaseJar(type: Copy) {
+    from('build/intermediates/packaged-classes/release/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'AWP_maintenance.jar')
+}
+
+// Task to export debug jar
+task exportDebugJar(type: Copy) {
+    from('build/intermediates/packaged-classes/debug/')
+    into('libs/jars')
+    include('classes.jar')
+    rename('classes.jar', 'motion_detector.jar')
+}
