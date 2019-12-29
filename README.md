@@ -25,7 +25,7 @@ Apart from that, here is what you will need:
 1. Clone this repository onto your computer: `git clone https://github.com/DreamzUpAbove/FreefallSensor.git`
 2. Open Android Studio
 3. Either press "Open an Existing Android Studio Project" or click File > Open...
-4. Choose the project KotlinRoomWithViewModel location
+4. Choose the project FreefallSensor location
 5. Wait for the Gradle execution to complete. You should see "app" appear as one of the build configurations
 6. Run the application (Run > Run 'App'), choose either a connected device or a simulator to run on
 ```
